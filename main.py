@@ -10,7 +10,7 @@ from jobs.kostal_aggregate_job import main as a_m
 
 def main():
 	schedule.every(10).seconds.do(k_m)
-	schedule.every(30).seconds.do(a_m)
+	schedule.every(5).minutes.do(a_m)
 
 	try:
 		while True:
