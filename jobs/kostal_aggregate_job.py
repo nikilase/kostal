@@ -3,8 +3,14 @@ from datetime import datetime
 
 from influxdb import InfluxDBClient
 from influxdb.resultset import ResultSet
-from config.config import InfluxConf as INF
-from config.config import KostalConf as KC
+
+try:
+	from config.config import KostalConf as KC
+	from config.config import InfluxConf as INF
+except ImportError as e:
+	print("Please configure your config file before running this app!")
+	raise e
+
 
 class DailyEnergy:
 	time: str

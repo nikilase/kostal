@@ -55,8 +55,12 @@ import hmac
 from Cryptodome.Cipher import AES
 from influxdb import InfluxDBClient
 
-from config.config import KostalConf as KC
-from config.config import InfluxConf as INF
+try:
+	from config.config import KostalConf as KC
+	from config.config import InfluxConf as INF
+except ImportError as e:
+	print("Please configure your config file before running this app!")
+	raise e
 
 
 def randomString(stringLength):
