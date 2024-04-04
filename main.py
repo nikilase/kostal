@@ -22,15 +22,17 @@ def main():
 
 
 def main_apscheduler():
+    scheduler = BlockingScheduler()
     try:
-        scheduler = BlockingScheduler()
+
         scheduler.add_job(k_m, "cron", second="0/10")
         scheduler.add_job(a_m, "cron", minute="0/5")
         scheduler.start()
     except KeyboardInterrupt:
         print("Shutting down from Keyboard Interrupt!")
+        scheduler.shutdown(wait=False)
         sys.exit()
 
 
 if __name__ == "__main__":
-    main()
+    main_apscheduler()
